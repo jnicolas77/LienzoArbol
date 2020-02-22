@@ -16,7 +16,7 @@ import logica.Nodo;
  */
 public class Lienzo extends JPanel {
     private Arbol objArbol;
-    public static final int DIAMETRO = 30;
+    public static final int DIAMETRO = 40;
     public static final int RADIO = DIAMETRO / 2;
     public static final int ANCHO = 50;
 
