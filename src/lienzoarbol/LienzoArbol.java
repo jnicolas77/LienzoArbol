@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lienzoarbol;
 
 import java.awt.event.ActionEvent;
@@ -13,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import logica.Arbol;
+import logica.Busqueda;
 
 /**
  *
@@ -40,6 +36,17 @@ public class LienzoArbol {
         objArbol.insertar(4 );
         objArbol.insertar(10);
         objControlador.iniciar();
+        Busqueda.Nodos nodo1 =new Busqueda.Nodos(7);
+	Busqueda.Nodos nodo2 =new Busqueda.Nodos(2);
+	Busqueda.Nodos nodo3 =new Busqueda.Nodos(9);
+	Busqueda.Nodos nodo4 =new Busqueda.Nodos(5);
+	Busqueda.Nodos nodo5 =new Busqueda.Nodos(10);
+	Busqueda.Nodos nodo6 =new Busqueda.Nodos(4);
+        nodo1.AgregarHijo(nodo2);
+	nodo1.AgregarHijo(nodo3);
+	nodo2.AgregarHijo(nodo4);
+	nodo3.AgregarHijo(nodo5);
+	nodo4.AgregarHijo(nodo6);
         //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         //MOSTRAR LIENZO EN UNA VENTANA TODO
         JFrame ventana = new JFrame();
@@ -83,26 +90,37 @@ JOptionPane.showMessageDialog(null,"El campo no puede estar vacio","Error",JOpti
                     }
                     else
                     {
-              JOptionPane.showMessageDialog(null, "Realizando Busqueda.\n");    
-              
-              lblRespuesta.setText("Estoy modificando el texto");
-  
+              JOptionPane.showMessageDialog(null, "Realizando Busqueda.\n"); 
+              Busqueda BusquedaPorAnchura = new Busqueda();
+              switch(Integer.parseInt(txtBuscar.getText().trim())) {
+                  case 7:
+                      lblRespuesta.setText(BusquedaPorAnchura.Buscar(nodo1));
+                      break;
+                  case 2:
+                      lblRespuesta.setText(BusquedaPorAnchura.Buscar(nodo2));
+                      break;
+                  case 9:
+                      lblRespuesta.setText(BusquedaPorAnchura.Buscar(nodo3));
+                      break;
+                  case 5:
+                      lblRespuesta.setText(BusquedaPorAnchura.Buscar(nodo4));
+                      break;
+                  case 4:
+                      lblRespuesta.setText(BusquedaPorAnchura.Buscar(nodo5));
+                      break;
+                  case 10:
+                      lblRespuesta.setText(BusquedaPorAnchura.Buscar(nodo6));
+                      break;
+              }
               }
        
 				
 			}
 		});
         ventana.add(btnBuscar);
-        
-        
-        
         ventana.getContentPane().add(objLienzo);
         ventana.setDefaultCloseOperation(3);
         ventana.setSize(500, 500);
         ventana.setVisible(true);
-        //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    
     }
- 
-        
 }
